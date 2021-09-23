@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         txtNome = findViewById(R.id.txtNome);
         txtSexo = findViewById(R.id.txtSexo);
         txtEmail = findViewById(R.id.txtEmail);
-        txtTel = findViewById(R.id.txtSexo);
+        txtTel = findViewById(R.id.txtTel);
         txtPref = findViewById(R.id.txtPref);
 
         btnExibir.setOnClickListener(this);
@@ -92,6 +92,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 txtTel.setText("Telefone: " + edtTel.getText());
             }
 
+            String prefs = "";
+
+            boolean musChecked = ((CheckBox)chkMusica).isChecked();
+            boolean cinChecked = ((CheckBox)chkCinema).isChecked();
+            boolean espChecked = ((CheckBox)chkEsporte).isChecked();
+            boolean gasChecked = ((CheckBox)chkGastronomia).isChecked();
+
+            if(musChecked || cinChecked || espChecked || gasChecked){
+
+                prefs = "Preferencia(s):";
+
+                if(musChecked){
+                    prefs = prefs.concat("Musica");
+                }
+                if(cinChecked){
+                    prefs = prefs.concat(" Cinema");
+                }
+                if (espChecked){
+                    prefs = prefs.concat(" Esporte");
+                }
+                if(gasChecked){
+                    prefs = prefs.concat(" Gatronomia");
+                }
+
+                prefs = prefs.replace(" ", ", ");
+                txtPref.setText(prefs);
+            }
 
         }
         else if(view.getId() == R.id.btnLimpar){
