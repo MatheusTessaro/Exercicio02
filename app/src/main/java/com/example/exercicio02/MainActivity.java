@@ -15,24 +15,25 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private EditText edtNome;
-    private EditText edtEmail;
-    private EditText edtTel;
+    private EditText    edtNome;
+    private EditText    edtEmail;
+    private EditText    edtTel;
     private RadioButton rdbFem;
     private RadioButton rdbMasc;
-    private CheckBox chkMusica;
-    private CheckBox chkCinema;
-    private CheckBox chkEsporte;
-    private CheckBox chkGastronomia;
-    private Switch swtNotif;
-    private Button btnExibir;
-    private Button btnLimpar;
-    private View lnlExibir;
-    private TextView txtNome;
-    private TextView txtSexo;
-    private TextView txtEmail;
-    private TextView txtTel;
-    private TextView txtPref;
+    private CheckBox    chkMusica;
+    private CheckBox    chkCinema;
+    private CheckBox    chkEsporte;
+    private CheckBox    chkGastronomia;
+    private Switch      swtNotif;
+    private Button      btnExibir;
+    private Button      btnLimpar;
+    private View        lnlExibir;
+    private TextView    txtNome;
+    private TextView    txtSexo;
+    private TextView    txtEmail;
+    private TextView    txtTel;
+    private TextView    txtPref;
+    private TextView    txtNotif;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,23 +43,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         edtNome = findViewById(R.id.edtNome);
         edtNome.setFilters(new InputFilter[]{new InputFilter.AllCaps()});
 
-        edtEmail = findViewById(R.id.edtEmail);
-        edtTel = findViewById(R.id.edtTel);
-        rdbFem = findViewById(R.id.rdbFem);
-        rdbMasc = findViewById(R.id.rdbMasc);
-        chkMusica = findViewById(R.id.chkMusica);
-        chkCinema = findViewById(R.id.chkCinema);
-        chkEsporte = findViewById(R.id.chkEsporte);
+        edtEmail       = findViewById(R.id.edtEmail);
+        edtTel         = findViewById(R.id.edtTel);
+        rdbFem         = findViewById(R.id.rdbFem);
+        rdbMasc        = findViewById(R.id.rdbMasc);
+        chkMusica      = findViewById(R.id.chkMusica);
+        chkCinema      = findViewById(R.id.chkCinema);
+        chkEsporte     = findViewById(R.id.chkEsporte);
         chkGastronomia = findViewById(R.id.chkGastronomia);
-        swtNotif = findViewById(R.id.swtNotif);
-        btnExibir = findViewById(R.id.btnExibir);
-        btnLimpar = findViewById(R.id.btnLimpar);
-        lnlExibir = findViewById(R.id.lnlExibir);
-        txtNome = findViewById(R.id.txtNome);
-        txtSexo = findViewById(R.id.txtSexo);
-        txtEmail = findViewById(R.id.txtEmail);
-        txtTel = findViewById(R.id.txtTel);
-        txtPref = findViewById(R.id.txtPref);
+        swtNotif       = findViewById(R.id.swtNotif);
+        btnExibir      = findViewById(R.id.btnExibir);
+        btnLimpar      = findViewById(R.id.btnLimpar);
+        lnlExibir      = findViewById(R.id.lnlExibir);
+        txtNome        = findViewById(R.id.txtNome);
+        txtSexo        = findViewById(R.id.txtSexo);
+        txtEmail       = findViewById(R.id.txtEmail);
+        txtTel         = findViewById(R.id.txtTel);
+        txtPref        = findViewById(R.id.txtPref);
+        txtNotif       = findViewById(R.id.txtNotif);
 
         btnExibir.setOnClickListener(this);
         btnLimpar.setOnClickListener(this);
@@ -113,11 +115,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     prefs = prefs.concat(" Esporte");
                 }
                 if(gasChecked){
-                    prefs = prefs.concat(" Gatronomia");
+                    prefs = prefs.concat(" Gastronomia");
                 }
 
                 prefs = prefs.replace(" ", ", ");
                 txtPref.setText(prefs);
+            }
+
+
+
+
+            if(((Switch)swtNotif).isChecked()){
+                txtNotif.setText("Ativar notificações? Sim");
+            }else if(!((Switch)swtNotif).isChecked()){
+                txtNotif.setText("Ativar notificações? Não");
             }
 
         }
